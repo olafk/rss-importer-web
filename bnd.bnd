@@ -1,0 +1,4 @@
+Bundle-Name: rss-importer-web
+Bundle-SymbolicName: com.liferay.demo.rssimport
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.demo.rssimport.constants
