@@ -191,9 +191,9 @@ public class RSSImporterPortlet extends MVCPortlet {
 		// cut a customer-specific "read on" section at the end of the preview
 		// CUSTOMIZE if you need similar functionality. There's likely no match
 		// with any other import...
-		int weiterLesen = result.indexOf("<p style=\"margin-top:30px;\" class=\"show-for-medium-up\">");
-		if (weiterLesen > 0)
-			result = result.substring(0, weiterLesen);
+		int readOnContent = result.indexOf("<p style=\"margin-top:30px;\" class=\"show-for-medium-up\">");
+		if (readOnContent > 0)
+			result = result.substring(0, readOnContent);
 
 		return result;
 	}
