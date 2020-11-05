@@ -114,9 +114,13 @@ public class RSSImporterPortlet extends MVCPortlet {
 					Date publishedDate = entry.getPublishedDate();
 					String description = decodeDescription(entry);
 
-					SyndContent contentObject = (SyndContent) entry.getContents().get(0);
-					String content = contentObject.getValue();
-
+					String content;
+					if(entry.getContents().isEmpty()) {
+						content = entry.getDescription().getValue();
+					} else { 
+						SyndContent contentObject = (SyndContent) entry.getContents().get(0);
+						content = contentObject.getValue();
+					}
 					// Extract image: If content starts with image, 
 					// transform it to the blog's coverImage
 					// CUSTOMIZE if you can use a different way to extract an image
@@ -155,7 +159,7 @@ public class RSSImporterPortlet extends MVCPortlet {
 					
 					results.add(title);
 					
-				} catch (IllegalArgumentException | IOException | PortalException e) {
+				} catch (IllegalArgumentException | IOException | PortalException | ArrayIndexOutOfBoundsException e) {
 					results.add(e.getClass().getName() + " " + e.getMessage() + " for " + entry.getTitle());
 				}
 			}
